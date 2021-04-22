@@ -1,0 +1,25 @@
+type Stock {
+  id: ID!
+  sku: Int!
+  name: String!
+}
+type SubscribableStock {
+  id: ID
+  sku: Int
+  name: String
+}
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+type Query {
+  listStocks: [Stock]
+}
+type Mutation {
+  addStock(sku: Int! name: String!): SubscribableStock
+}
+type Subscription {
+  addedStock(id: ID, sku: Int, name: String): SubscribableStock
+  @aws_subscribe(mutations: ["addStock"])
+}
