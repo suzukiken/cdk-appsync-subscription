@@ -18,6 +18,7 @@ type Query {
 }
 type Mutation {
   addStock(sku: Int! name: String!): SubscribableStock
+  deleteStock(id: ID!): Stock
 }
 type Subscription {
   addedStock(id: ID, sku: Int, name: String): SubscribableStock

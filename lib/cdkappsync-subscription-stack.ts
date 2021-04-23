@@ -53,6 +53,13 @@ export class CdkappsyncSubscriptionStack extends cdk.Stack {
 
     dynamo_datasource.createResolver({
       typeName: "Mutation",
+      fieldName: "deleteStock",
+      requestMappingTemplate: appsync.MappingTemplate.dynamoDbDeleteItem("id", "id"),
+      responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultItem(),
+    });
+
+    dynamo_datasource.createResolver({
+      typeName: "Mutation",
       fieldName: "addStock",
       requestMappingTemplate: appsync.MappingTemplate.fromFile(
         "mapping_template/add_stock.vtl"
