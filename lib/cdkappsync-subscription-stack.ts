@@ -31,6 +31,11 @@ export class CdkappsyncSubscriptionStack extends cdk.Stack {
         defaultAuthorization: {
           authorizationType: appsync.AuthorizationType.API_KEY,
         },
+        /*
+        additionalAuthorizationModes: [{
+          authorizationType: appsync.AuthorizationType.IAM
+        }]
+        */
       },
       schema: new appsync.Schema({
         filePath: "graphql/schema.graphql",
