@@ -18,9 +18,9 @@ type Query {
 }
 type Mutation {
   addStock(sku: Int! name: String!): SubscribableStock
-  deleteStock(id: ID!): Stock
+  deleteStock(id: ID!): SubscribableStock
 }
 type Subscription {
-  addedStock(id: ID, sku: Int, name: String): SubscribableStock
-  @aws_subscribe(mutations: ["addStock"])
+  stocksChanged(id: ID, sku: Int, name: String): SubscribableStock
+  @aws_subscribe(mutations: ["addStock", "deleteStock"])
 }
